@@ -1,23 +1,27 @@
-# CoolRunners Guatemala — Sitio web (primera versión)
+# CoolRunners Guatemala — Website V3
 
-Sitio estático responsive listo para GitHub Pages. No necesita instalación ni compilación.
+Sitio estático responsive para GitHub Pages, con **fotografías reales proporcionadas por CoolRunners**, logotipo oficial, transiciones y animaciones accesibles. No necesita compilación.
 
-## Publicación en GitHub Pages
+## Publicar la actualización
 
-1. Inicia sesión en GitHub y crea un repositorio nuevo llamado `coolrunners-website` (preferiblemente público para GitHub Pages gratuito).
-2. Sube **los tres archivos** `index.html`, `styles.css`, `script.js` a la raíz del repositorio (no subas solamente el ZIP).
-3. Ve a **Settings → Pages → Build and deployment**.
-4. En Source elige **Deploy from a branch**, luego **main** y **/(root)**, y guarda.
-5. El sitio estará disponible en `https://TU-USUARIO.github.io/coolrunners-website/` cuando GitHub complete la publicación.
+1. Descarga el ZIP y extráelo.
+2. En GitHub abre `kiquerodas/coolrunners-website`.
+3. Sustituye los archivos `index.html`, `styles.css`, `script.js` y añade toda la carpeta `assets/` (con sus imágenes `.webp`) en la raíz del repositorio. Conserva la ruta exacta `assets/hero.webp` y similares.
+4. Haz clic en **Commit changes**. GitHub Pages actualizará el sitio automáticamente.
+5. Comprueba en `https://kiquerodas.github.io/coolrunners-website/` (si ves la versión vieja, recarga sin caché).
 
-## Antes de compartir
+## Qué funciona
 
-- Cambiar el enlace provisional de Instagram en `index.html` (actualmente apunta a instagram.com, no a una cuenta oficial).
-- Confirmar horarios, tarifas y punto de encuentro publicados.
-- Incorporar logo oficial y fotografías autorizadas.
-- El apartado de maratones aparece como **Próximamente**: todavía no conecta con Google Sheets ni captura información.
-- No colocar claves, tokens ni credenciales de Google Apps Script dentro de este repositorio público.
+- Menú móvil, navegación, efectos al desplazarse y cinta animada (se desactivan con preferencia de movimiento reducido).
+- Enlaces oficiales de Instagram, Facebook y correo.
+- Links **Cómo llegar**: búsquedas en Google Maps para Futeca Zona 14 y el punto de jueves. Revisar y sustituir por pines exactos cuando se tengan.
+- Formulario de contacto: **prepara un mensaje en la aplicación de correo**. No almacena información ni envía correos automáticamente.
+- Contenido de horarios confirmado: martes/jueves/sábado 5:00 a. m. y domingo 6:00 a. m.
+- Precios Q500 primer mes y Q400 siguientes.
 
-## Próxima etapa
+## Pendiente
 
-Integrar el Registro Histórico de Maratones con un backend probado. GitHub Pages solo aloja archivos estáticos; no almacena registros por sí mismo.
+- Maratones: el registro sigue en estado "Próximamente"; no se ha conectado a Google Sheets.
+- Para recibir consultas directamente sin abrir un programa de correo, se necesita un servicio/backend de formularios.
+- Las imágenes de corredores se han usado tal como las proporcionó el propietario. Confirmar autorización de publicación de todas las personas que aparecen en fotos antes de difundirlas.
+- No incluir tokens privados ni contraseñas en el repositorio público.
