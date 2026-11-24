@@ -1,27 +1,16 @@
-# CoolRunners Guatemala — Website V3
+# CoolRunners Guatemala — V4
 
-Sitio estático responsive para GitHub Pages, con **fotografías reales proporcionadas por CoolRunners**, logotipo oficial, transiciones y animaciones accesibles. No necesita compilación.
+Esta versión incorpora seis fotografías reales adicionales de CoolRunners y un muro de 10 maratones. Los siete logos disponibles fueron convertidos a WebP de mayor resolución de visualización; el detalle original no puede recuperarse por completo del material de baja resolución. Nueva York, Valencia y Frankfurt se muestran como etiquetas de texto hasta conseguir sus logos.
 
-## Publicar la actualización
+## Publicar en GitHub Pages
+1. Abra su repositorio `kiquerodas/coolrunners-website`.
+2. Reemplace en la raíz `index.html`, `styles.css`, `script.js`.
+3. Abra `assets/` y suba todos los archivos nuevos de esta carpeta (puede dejar los anteriores).
+4. Confirme los cambios. GitHub Pages publicará automáticamente la nueva versión.
 
-1. Descarga el ZIP y extráelo.
-2. En GitHub abre `kiquerodas/coolrunners-website`.
-3. Sustituye los archivos `index.html`, `styles.css`, `script.js` y añade toda la carpeta `assets/` (con sus imágenes `.webp`) en la raíz del repositorio. Conserva la ruta exacta `assets/hero.webp` y similares.
-4. Haz clic en **Commit changes**. GitHub Pages actualizará el sitio automáticamente.
-5. Comprueba en `https://kiquerodas.github.io/coolrunners-website/` (si ves la versión vieja, recarga sin caché).
-
-## Qué funciona
-
-- Menú móvil, navegación, efectos al desplazarse y cinta animada (se desactivan con preferencia de movimiento reducido).
-- Enlaces oficiales de Instagram, Facebook y correo.
-- Links **Cómo llegar**: búsquedas en Google Maps para Futeca Zona 14 y el punto de jueves. Revisar y sustituir por pines exactos cuando se tengan.
-- Formulario de contacto: **prepara un mensaje en la aplicación de correo**. No almacena información ni envía correos automáticamente.
-- Contenido de horarios confirmado: martes/jueves/sábado 5:00 a. m. y domingo 6:00 a. m.
-- Precios Q500 primer mes y Q400 siguientes.
-
-## Pendiente
-
-- Maratones: el registro sigue en estado "Próximamente"; no se ha conectado a Google Sheets.
-- Para recibir consultas directamente sin abrir un programa de correo, se necesita un servicio/backend de formularios.
-- Las imágenes de corredores se han usado tal como las proporcionó el propietario. Confirmar autorización de publicación de todas las personas que aparecen en fotos antes de difundirlas.
-- No incluir tokens privados ni contraseñas en el repositorio público.
+## Antes de compartir
+- Compruebe consentimiento de las personas retratadas.
+- Los mapas abren búsquedas y no garantizan el punto exacto.
+- El formulario de contacto abre la app de correo; no almacena respuestas.
+- El registro histórico de maratones sigue marcado como próximo; no hay base de datos conectada.
+- Logos de maratones: material proporcionado por el usuario. Verifique derechos de uso para su publicación.
