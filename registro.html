@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="Registra todos tus maratones con CoolRunners Guatemala. Un solo formulario y tantos maratones como hayas completado.">
+  <title>Registro Histórico de Maratones | CoolRunners Guatemala</title>
+  <style>
+    :root { --blue:#1453a1; --navy:#102640; --orange:#f28b22; --ink:#16263b; --muted:#61718a; --line:#dce5ef; --bg:#f4f7fb; }
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.5}
+    .wrap{max-width:860px;margin:0 auto;padding:22px 14px 80px}
+    header{background:linear-gradient(125deg,#0c2a4d,#1c69ba);color:white;border-radius:22px;padding:28px 28px 25px;box-shadow:0 12px 30px #10365b21}
+    .eyebrow{letter-spacing:.16em;text-transform:uppercase;font-size:12px;font-weight:800;color:#b9dcff}
+    h1{font-size:clamp(25px,5vw,39px);line-height:1.12;margin:9px 0}header p{color:#e5f2ff;max-width:650px;margin:0}
+    .pill{display:inline-block;margin-top:16px;background:#ffffff1f;border:1px solid #ffffff55;border-radius:40px;padding:6px 12px;font-size:13px}
+    .panel{background:white;border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:18px;box-shadow:0 4px 18px #1f44650a}
+    .panel-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:5px}
+    h2{margin:0;font-size:21px;color:var(--navy)} .hint{margin:0 0 20px;color:var(--muted);font-size:14px}
+    .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .field{display:flex;flex-direction:column;gap:6px}label{font-size:14px;font-weight:700}
+    input{font:inherit;width:100%;min-width:0;padding:11px 12px;border:1px solid #cbd8e6;border-radius:10px;background:white;color:var(--ink)}
+    input:focus{outline:2px solid #94c8ff;border-color:var(--blue)} .wide{grid-column:1/-1}
+    .card{background:#fafcfe;border:1px solid var(--line);border-radius:15px;padding:18px;margin:14px 0}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+    .card-head strong{color:var(--blue);font-size:17px}button{font:inherit;font-weight:700;cursor:pointer;border-radius:11px;border:0;padding:11px 15px}
+    .add{background:#eaf3ff;color:#1453a1;width:100%;border:1px dashed #8eb7e6}.remove{background:#fcecea;color:#9b302d;font-size:13px;padding:7px 10px}
+    .submit{background:var(--orange);color:#171d28;width:100%;padding:15px;font-size:17px;margin-top:14px}
+    button:disabled{opacity:.6;cursor:wait}.check{display:flex;gap:11px;align-items:flex-start;margin:15px 0;font-size:14px}
+    .check input{width:18px;height:18px;margin:2px 0;flex-shrink:0}
+    .summary{font-weight:800;color:var(--blue);font-size:14px;background:#eaf3ff;border-radius:30px;padding:6px 11px;white-space:nowrap}
+    #status{margin-top:15px;padding:12px 14px;border-radius:11px;display:none}
+    #status.error{display:block;background:#ffefee;color:#922f29}#status.success{display:block;background:#e7f7ec;color:#18532e}
+    footer{text-align:center;color:var(--muted);font-size:12px;padding:23px 5px}
+    .required{color:#bf4a25} .note{font-size:13px;color:var(--muted);margin:8px 0 0}
+    @media(max-width:610px){.fields{grid-template-columns:1fr}.panel{padding:18px}header{padding:24px 20px}.card{padding:15px}}
+  </style>
+  <style>.site-return{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.site-return img{width:166px;max-height:68px;object-fit:contain;object-position:left}.site-return a:last-child{font-weight:700;color:#1453a1;text-decoration:none}.site-return a:last-child:hover{text-decoration:underline}.top-tag{background:#fff;border-bottom:1px solid #dce5ef;padding:9px 0;font-size:12px;text-align:center;letter-spacing:.13em;font-weight:bold;color:#174a86}.wrap{padding-top:18px}@media(max-width:500px){.site-return img{width:126px}.site-return a:last-child{font-size:12px}} </style>
+  <style>.connection-note{font-size:12px;opacity:.8;line-height:1.5}</style>
+</head>
+<body>
+<div class="top-tag">COOLRUNNERS GUATEMALA · #WERUNTOGETHER</div>
+<div class="wrap">
+<div class="site-return"><a href="./" aria-label="Volver a CoolRunners Guatemala"><img src="assets/logo.webp" alt="CoolRunners Guatemala"></a><a href="./">← Volver al sitio</a></div>
+  <header>
+    <div class="eyebrow">COOLRUNNERS · GUATEMALA</div>
+    <h1>Registro Histórico<br>de Maratones 🏅</h1>
+    <p>¡Cada meta cuenta! Registre todos los maratones de 42.195 km que ha terminado, desde el primero hasta el más reciente, incluso los que corrió antes de unirse a CoolRunners.</p>
+    <div class="pill">Un solo formulario · Todos sus maratones</div>
+  </header>
+  <form id="registro">
+    <section class="panel">
+      <h2>01 · Sus datos</h2>
+      <p class="hint">Solo necesita escribirlos una vez.</p>
+      <div class="fields">
+        <div class="field"><label for="nombre">Nombre <span class="required">*</span></label><input id="nombre" maxlength="80" required autocomplete="given-name"></div>
+        <div class="field"><label for="apellido">Apellido <span class="required">*</span></label><input id="apellido" maxlength="80" required autocomplete="family-name"></div>
+        <div class="field wide"><label for="correo">Correo electrónico <span class="required">*</span></label><input id="correo" type="email" maxlength="160" required autocomplete="email"><p class="note">Se utilizará para identificar sus registros. No se publicará.</p></div>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="panel-title"><h2>02 · Sus maratones</h2><span class="summary" id="counter">1 maratón</span></div>
+      <p class="hint">Añada uno por uno. Puede registrar 25, 50 o más en un mismo envío (hasta 100 por envío).</p>
+      <div id="marathon-list"></div>
+      <button class="add" id="add" type="button">＋ Agregar otro maratón</button>
+    </section>
+    <section class="panel">
+      <h2>03 · Autorizaciones</h2>
+      <label class="check"><input type="checkbox" id="publicar"><span><strong>Opcional:</strong> Autorizo a CoolRunners Guatemala a compartir mi nombre y mis logros maratonianos en redes sociales o publicaciones de la comunidad. Mi correo no se publicará.</span></label>
+      <label class="check"><input type="checkbox" id="privacidad" required><span><strong>Obligatorio:</strong> Acepto que CoolRunners Guatemala guarde estos datos para elaborar su registro histórico de maratones y estadísticas de la comunidad. Puedo solicitar correcciones o eliminación de mis registros directamente a los administradores de CoolRunners.</span></label>
+      <button class="submit" type="submit" id="send">Registrar mis maratones</button>
+      <div id="status" role="status" aria-live="polite"></div>
+      <p class="note">Los registros se envían a una hoja de cálculo administrada por CoolRunners. No se muestran públicamente en este formulario.</p>
+    </section>
+  </form>
+  <footer>COOLRUNNERS GUATEMALA · #weruntogether</footer>
+</div>
+<template id="race-template">
+  <article class="card race">
+    <div class="card-head"><strong class="race-name">Maratón 1</strong><button class="remove" type="button">Eliminar</button></div>
+    <div class="fields">
+      <div class="field wide"><label>Nombre del maratón <span class="required">*</span></label><input name="carrera" maxlength="180" placeholder="Ej. Boston Marathon" required></div>
+      <div class="field"><label>Ciudad <span class="required">*</span></label><input name="ciudad" maxlength="120" placeholder="Ej. Boston" required></div>
+      <div class="field"><label>País <span class="required">*</span></label><input name="pais" maxlength="120" placeholder="Ej. Estados Unidos" required></div>
+      <div class="field"><label>Año <span class="required">*</span></label><input name="anio" type="number" min="1896" max="2100" placeholder="Ej. 2024" required></div>
+      <div class="field"><label>Tiempo oficial <span class="required">*</span></label><input name="tiempo" type="text" inputmode="numeric" pattern="[0-9]{1,2}:[0-9]{2}:[0-9]{2}" placeholder="03:25:18" title="Formato HH:MM:SS" required></div>
+      <div class="field"><label>Fecha exacta (opcional)</label><input name="fecha" type="date"></div>
+      <div class="field"><label>Enlace a resultados (opcional)</label><input name="enlace" type="url" maxlength="500" placeholder="https://..."></div>
+    </div>
+  </article>
+</template>
+<iframe name="registro-result" id="registro-result" style="display:none" title="Resultado del registro"></iframe>
+<form id="backend-form" method="POST" target="registro-result" style="display:none"><input type="hidden" name="payload" id="backend-payload"></form>
+<script>
+  // Public Google Apps Script deployment URL. Replace after redeployment if necessary.
+  const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxHEs6mkFHT5H8-OYF7TQ_dxAO_8Y5RPFsRTlCuhFW2112VSn2UV7_wKl3L4OKyDaqecg/exec';
+  const backendForm = document.getElementById('backend-form');
+  backendForm.action = BACKEND_URL;
+  let pendingSubmission = false;
+  let pendingTimer;
+  window.addEventListener('message', event => {
+    if (!pendingSubmission || event.source !== document.getElementById('registro-result').contentWindow) return;
+    // Apps Script's HTML response is served from Google's domains.
+    if (!/^https:\/\/(?:[a-z0-9-]+\.)*(?:googleusercontent\.com|google\.com)$/.test(event.origin) && event.origin !== 'null') return;
+    const result=event.data;
+    if (!result || typeof result !== 'object' || typeof result.ok !== 'boolean') return;
+    pendingSubmission = false;
+    clearTimeout(pendingTimer);
+    if (result.ok) {
+      status.className='success';status.textContent='✅ ¡Listo! Se registraron '+result.total+' maratón(es). ¡Gracias por compartir su historia!';status.style.display='block';
+      document.getElementById('registro').reset();list.innerHTML='';addRace();resetButton();status.scrollIntoView({behavior:'smooth',block:'center'});
+    } else {showError(result.mensaje || 'No se pudo completar el registro.');resetButton();}
+  });
+  const list = document.getElementById('marathon-list');
+  const status = document.getElementById('status');
+  const send = document.getElementById('send');
+  const MAX = 100;
+  function updateNumbers(){
+    const cards = [...list.querySelectorAll('.race')];
+    cards.forEach((card,i)=>{
+      card.querySelector('.race-name').textContent = 'Maratón ' + (i+1);
+      card.querySelector('.remove').hidden = cards.length === 1;
+    });
+    document.getElementById('counter').textContent = cards.length + (cards.length === 1 ? ' maratón' : ' maratones');
+    document.getElementById('add').disabled = cards.length >= MAX;
+  }
+  function addRace(){
+    if(list.children.length>=MAX)return;
+    const card = document.getElementById('race-template').content.firstElementChild.cloneNode(true);
+    card.querySelector('.remove').addEventListener('click',()=>{card.remove();updateNumbers();});
+    card.querySelector('[name="anio"]').max = new Date().getFullYear();
+    card.querySelector('[name="fecha"]').max = new Date().toISOString().slice(0,10);
+    list.appendChild(card);updateNumbers();
+  }
+  document.getElementById('add').addEventListener('click',addRace);addRace();
+  document.getElementById('registro').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!this.reportValidity())return;
+    const maratones=[...list.querySelectorAll('.race')].map(card=>{
+      const item={};card.querySelectorAll('[name]').forEach(el=>item[el.name]=el.value.trim());return item;
+    });
+    for(let i=0;i<maratones.length;i++){
+      const m=maratones[i], hms=m.tiempo.split(':').map(Number);
+      if(hms.length!==3 || hms[0]>23 || hms[1]>59 || hms[2]>59 || hms.every(x=>x===0)){
+        return showError('Revise el tiempo del maratón '+(i+1)+'. Use HH:MM:SS.');
+      }
+      if(m.fecha && Number(m.fecha.substring(0,4))!==Number(m.anio)){
+        return showError('La fecha y el año del maratón '+(i+1)+' no coinciden.');
+      }
+    }
+    const payload={participante:{
+      nombre:document.getElementById('nombre').value.trim(),
+      apellido:document.getElementById('apellido').value.trim(),
+      correo:document.getElementById('correo').value.trim(),
+      publicar:document.getElementById('publicar').checked,
+      aceptaPrivacidad:document.getElementById('privacidad').checked
+    },maratones};
+    send.disabled=true;send.textContent='Guardando maratones…';status.style.display='none';
+    pendingSubmission=true;
+    pendingTimer=setTimeout(()=>{
+      if(!pendingSubmission)return;
+      pendingSubmission=false;
+      resetButton();
+      showError('No recibimos confirmación del servidor. Antes de volver a enviar, contacte a coolrunnersgt@gmail.com para comprobar si sus datos fueron guardados y evitar duplicados.');
+    },45000);
+    document.getElementById('backend-payload').value=JSON.stringify(payload);
+    backendForm.submit();
+    // Do not display a success message until the backend confirms the save.
+  });
+  function resetButton(){send.disabled=false;send.textContent='Registrar mis maratones';}
+  function showError(message){status.className='error';status.textContent='⚠ '+message;status.style.display='block';status.scrollIntoView({behavior:'smooth',block:'nearest'});}
+</script>
+</body></html>

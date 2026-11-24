@@ -1,0 +1,46 @@
+COOLRUNNERS — REGISTRO DE MARATONES V5
+====================================
+
+ESTE PAQUETE ACTUALIZA SOLO LA PAGINA DE MARATONES.
+
+ARCHIVOS
+- index.html: pagina de inicio actualizada, conserva preview WhatsApp y @coolrunnersgt.
+- registro.html: nueva pagina con agregar/quitar maratones y un solo envio.
+- Code.gs: backend para guardar las respuestas en Google Sheets (NO subir a GitHub).
+
+PASO 1 — GITHUB
+1. En https://github.com/kiquerodas/coolrunners-website/ reemplazar index.html.
+2. Crear/subir registro.html directamente en la RAIZ del repositorio (junto a index.html).
+3. NO subir Code.gs a GitHub. No es necesario subir fotos ni cambiar styles.css o script.js.
+4. Hacer Commit changes.
+5. Comprobar que abre https://kiquerodas.github.io/coolrunners-website/registro.html
+
+PASO 2 — APPS SCRIPT / GOOGLE SHEETS
+1. Abrir el PROYECTO DE APPS SCRIPT que ya usabas para el registro.
+2. Reemplazar TODO el contenido de Code.gs por el Code.gs incluido en este paquete.
+3. Dejar Index.html (con I mayuscula) si ya existe: la funcion doGet() lo usa.
+4. Guardar. En el selector de funciones ejecutar configurarRegistro UNA VEZ.
+   Si el script ya tenia SHEET_ID guardado, reutiliza la misma hoja.
+5. Buscar en Execution log la URL de la hoja y verificarla.
+6. Deploy > Manage deployments > Edit (lapiz) > Version: New version > Deploy.
+   Execute as: Me; Who has access: Anyone.
+7. IMPORTANTE: si la URL /exec del nuevo despliegue cambia, cambiar BACKEND_URL
+   en registro.html por la nueva URL. La URL actualmente incluida es:
+   https://script.google.com/macros/s/AKfycbxHEs6mkFHT5H8-OYF7TQ_dxAO_8Y5RPFsRTlCuhFW2112VSn2UV7_wKl3L4OKyDaqecg/exec
+
+PASO 3 — PRUEBA REAL
+1. Abrir registro.html en el sitio publico, no como archivo local.
+2. Enviar 2 maratones de prueba con nombre y correo identificables.
+3. Comprobar que aparezcan DOS filas en la hoja de respuestas bajo un mismo ID de envio.
+4. Verificar que se muestre mensaje de confirmacion en la pagina.
+5. Eliminar las filas de prueba despues de verificar, si lo deseas.
+6. No anunciar el formulario hasta completar la prueba de extremo a extremo.
+
+NOTAS
+- GitHub Pages no guarda datos. El guardado lo hace Apps Script bajo tu cuenta.
+- La hoja es privada salvo que tu la compartas.
+- Este sistema emplea un formulario POST con iframe oculto y postMessage para confirmacion.
+  Restricciones del navegador o problemas del despliegue de Apps Script pueden impedir
+  una confirmacion; la pantalla indica comprobar antes de reenviar para evitar duplicados.
+- No incluyas credenciales, claves ni datos privados en el repositorio publico.
+- Confirma que los usuarios acepten el aviso de privacidad antes de usar sus datos.
