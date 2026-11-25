@@ -1,7 +1,12 @@
-COOLRUNNERS GUATEMALA — V7 FAMILIA
+COOLRUNNERS V8 — FOTO DE FONDO EN «SOMOS UNA FAMILIA»
 
-En GitHub, reemplazar solamente los archivos index.html y styles.css de la raíz del repositorio. Mantener script.js, registro.html y todos los recursos de assets/ sin cambios.
+Esta actualización SOLO cambia el fondo de la sección “Mucho más que un equipo”.
+No modifica textos, formularios, fotos existentes, precios ni enlaces.
 
-Cambios: nueva redacción positiva de comunidad, tres niveles de entrenamiento, objetivos desde los primeros kilómetros hasta ultras y clasificación a Boston, cierre emocional #WeRunTogether y fondo azul más intenso detrás de las tarifas.
+EN GITHUB
+1. En la raíz del repositorio, reemplaza styles.css por este styles.css.
+2. Dentro de la carpeta assets, sube familia-watermark.webp.
+3. Haz Commit changes.
+4. Abre la web y actualiza con Ctrl+F5 si ves la versión antigua.
 
-Se conservan metadatos del preview de WhatsApp, enlaces, fotos y enlace al Registro Histórico de Maratones.
+No subas el ZIP tal cual, solo esos dos archivos en sus rutas correspondientes.

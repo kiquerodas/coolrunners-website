@@ -63,3 +63,25 @@
 .price-stage{background:radial-gradient(circle at 92% 12%,#2b8fca90 0%,transparent 42%),linear-gradient(135deg,#061e3b 0%,#073d6e 59%,#0e70ad 100%);border:1px solid #9fdcff40;border-radius:10px}
 .price-stage .prices .price-card{border-radius:7px}
 @media(max-width:700px){.family-finish-bottom{flex-direction:column;align-items:flex-start;gap:5px}.all-levels-intro .all-levels-promise{font-size:15px}.family-finish-mark{font-size:25px}}
+
+/* V8 — grayscale team photograph behind “Mucho más que un equipo”.
+   The dark blue gradient protects white text and preserves the site's palette. */
+.all-levels {
+  background-image:
+    linear-gradient(90deg, rgba(5,26,48,.94) 0%, rgba(5,30,53,.89) 44%, rgba(6,34,59,.64) 74%, rgba(6,33,57,.57) 100%),
+    url("assets/familia-watermark.webp");
+  background-position: center, center center;
+  background-size: cover, cover;
+  background-repeat: no-repeat;
+  background-color: #082b49;
+}
+.all-levels .level-card {background:rgba(4,27,48,.58);backdrop-filter:blur(2px)}
+.all-levels .level-card:hover{background:rgba(8,48,76,.78)}
+@media (max-width: 800px) {
+  .all-levels {
+    background-image:
+      linear-gradient(rgba(5,27,49,.89), rgba(5,27,49,.91)),
+      url("assets/familia-watermark.webp");
+    background-position:center, 64% center;
+  }
+}
