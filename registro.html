@@ -90,28 +90,54 @@
     </div>
   </article>
 </template>
-<iframe name="registro-result" id="registro-result" style="display:none" title="Resultado del registro"></iframe>
-<form id="backend-form" method="POST" target="registro-result" style="display:none"><input type="hidden" name="payload" id="backend-payload"></form>
 <script>
-  // Public Google Apps Script deployment URL. Replace after redeployment if necessary.
+  // Current deployment: update only if a NEW deployment ID is created.
   const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxHEs6mkFHT5H8-OYF7TQ_dxAO_8Y5RPFsRTlCuhFW2112VSn2UV7_wKl3L4OKyDaqecg/exec';
-  const backendForm = document.getElementById('backend-form');
-  backendForm.action = BACKEND_URL;
+  const STORAGE_KEY='coolrunners_pending_marathon_v2';
   let pendingSubmission = false;
-  let pendingTimer;
-  window.addEventListener('message', event => {
-    if (!pendingSubmission || event.source !== document.getElementById('registro-result').contentWindow) return;
-    // Apps Script's HTML response is served from Google's domains.
-    if (!/^https:\/\/(?:[a-z0-9-]+\.)*(?:googleusercontent\.com|google\.com)$/.test(event.origin) && event.origin !== 'null') return;
-    const result=event.data;
-    if (!result || typeof result !== 'object' || typeof result.ok !== 'boolean') return;
-    pendingSubmission = false;
-    clearTimeout(pendingTimer);
-    if (result.ok) {
-      status.className='success';status.textContent='✅ ¡Listo! Se registraron '+result.total+' maratón(es). ¡Gracias por compartir su historia!';status.style.display='block';
-      document.getElementById('registro').reset();list.innerHTML='';addRace();resetButton();status.scrollIntoView({behavior:'smooth',block:'center'});
-    } else {showError(result.mensaje || 'No se pudo completar el registro.');resetButton();}
-  });
+  let pendingId = '';
+  let tries = 0;
+  let statusTimer;
+  const deadlineAttempts = 24;
+  function newSubmissionId(){
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    const b=new Uint8Array(16);crypto.getRandomValues(b);return Array.from(b,x=>x.toString(16).padStart(2,'0')).join('');
+  }
+  function checkStatus(id, onResult) {
+    const cb='crStatus_'+Math.random().toString(36).slice(2);
+    const script=document.createElement('script');
+    let finished=false;
+    const cleanup=()=>{if(finished)return;finished=true;clearTimeout(timer);delete window[cb];script.remove();};
+    window[cb]=(result)=>{cleanup();onResult(result);};
+    script.onerror=()=>{cleanup();onResult({state:'pending'});};
+    const timer=setTimeout(()=>{cleanup();onResult({state:'pending'});},8500);
+    script.src=BACKEND_URL+'?action=status&id='+encodeURIComponent(id)+'&callback='+cb+'&_='+Date.now();
+    document.head.appendChild(script);
+  }
+  function verifySubmission(id) {
+    if(!pendingSubmission || pendingId!==id)return;
+    checkStatus(id,(response)=>{
+      if(!pendingSubmission || pendingId!==id)return;
+      if(response && response.state==='saved'){
+        pendingSubmission=false;clearTimeout(statusTimer);
+        sessionStorage.removeItem(STORAGE_KEY);
+        status.className='success';status.textContent='¡Listo! Se registraron '+response.total+' maratón(es). ¡Gracias por compartir su historia!';status.style.display='block';
+        document.getElementById('registro').reset();list.innerHTML='';addRace();resetButton();status.scrollIntoView({behavior:'smooth',block:'center'});
+        return;
+      }
+      if(response && response.state==='error'){
+        pendingSubmission=false;clearTimeout(statusTimer);
+        resetButton();showError('No se guardaron los maratones: '+(response.message||'Error del servidor.'));
+        // Keep submission ID in session for deliberate retry without duplicates.
+        return;
+      }
+      tries++;
+      if(tries>=deadlineAttempts){
+        pendingSubmission=false;resetButton();
+        showError('No se pudo comprobar el registro. No vuelva a enviarlo todavía. Contacte a coolrunnersgt@gmail.com para evitar duplicados.');
+      } else statusTimer=setTimeout(()=>verifySubmission(id),2000);
+    });
+  }
   const list = document.getElementById('marathon-list');
   const status = document.getElementById('status');
   const send = document.getElementById('send');
@@ -169,16 +195,19 @@
       aceptaPrivacidad:document.getElementById('privacidad').checked
     },maratones};
     send.disabled=true;send.textContent='Guardando maratones…';status.style.display='none';
-    pendingSubmission=true;
-    pendingTimer=setTimeout(()=>{
-      if(!pendingSubmission)return;
-      pendingSubmission=false;
-      resetButton();
-      showError('No recibimos confirmación del servidor. Antes de volver a enviar, contacte a coolrunnersgt@gmail.com para comprobar si sus datos fueron guardados y evitar duplicados.');
-    },45000);
-    document.getElementById('backend-payload').value=JSON.stringify(payload);
-    backendForm.submit();
-    // Do not display a success message until the backend confirms the save.
+    const fingerprint=JSON.stringify(payload);
+    let pending=null;
+    try{pending=JSON.parse(sessionStorage.getItem(STORAGE_KEY)||'null');}catch(_){}
+    pendingId=(pending && pending.fingerprint===fingerprint && pending.id) ? pending.id : newSubmissionId();
+    sessionStorage.setItem(STORAGE_KEY,JSON.stringify({id:pendingId,fingerprint}));
+    payload.submissionId=pendingId;
+    pendingSubmission=true;tries=0;
+    // Simple no-CORS POST, followed by separate read-only status checks.
+    const body=new URLSearchParams({payload:JSON.stringify(payload)});
+    fetch(BACKEND_URL,{method:'POST',mode:'no-cors',body,redirect:'follow',credentials:'omit',keepalive:false})
+      .catch(()=>{/* Status lookup decides whether data was saved. */});
+    // Begin checking after POST is sent; do not assume an opaque response indicates success.
+    statusTimer=setTimeout(()=>verifySubmission(pendingId),2300);
   });
   function resetButton(){send.disabled=false;send.textContent='Registrar mis maratones';}
   function showError(message){status.className='error';status.textContent='⚠ '+message;status.style.display='block';status.scrollIntoView({behavior:'smooth',block:'nearest'});}
