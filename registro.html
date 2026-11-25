@@ -84,7 +84,7 @@
       <div class="field"><label>Ciudad <span class="required">*</span></label><input name="ciudad" maxlength="120" placeholder="Ej. Boston" required></div>
       <div class="field"><label>País <span class="required">*</span></label><input name="pais" maxlength="120" placeholder="Ej. Estados Unidos" required></div>
       <div class="field"><label>Año <span class="required">*</span></label><input name="anio" type="number" min="1896" max="2100" placeholder="Ej. 2024" required></div>
-      <div class="field"><label>Tiempo oficial <span class="required">*</span></label><input name="tiempo" type="text" inputmode="numeric" pattern="[0-9]{1,2}:[0-9]{2}:[0-9]{2}" placeholder="03:25:18" title="Formato HH:MM:SS" required></div>
+      <div class="field"><label>Tiempo oficial <span class="required">*</span></label><input name="tiempo" type="text" inputmode="text" autocomplete="off" pattern="[0-9]{1,2}:[0-9]{2}:[0-9]{2}" placeholder="03:25:18" title="Formato HH:MM:SS" required></div>
       <div class="field"><label>Fecha exacta (opcional)</label><input name="fecha" type="date"></div>
       <div class="field"><label>Enlace a resultados (opcional)</label><input name="enlace" type="url" maxlength="500" placeholder="https://..."></div>
     </div>
@@ -133,9 +133,21 @@
     card.querySelector('[name="fecha"]').max = new Date().toISOString().slice(0,10);
     list.appendChild(card);updateNumbers();
   }
+  // Accept HH:MM:SS, or digits alone (e.g. 32518 -> 03:25:18).
+  function normalizeTime(field) {
+    const raw = field.value.trim();
+    if (/^\d{5,6}$/.test(raw)) {
+      const digits = raw.padStart(6, '0');
+      field.value = digits.slice(0,2) + ':' + digits.slice(2,4) + ':' + digits.slice(4);
+    }
+  }
+  list.addEventListener('focusout', event => {
+    if (event.target.matches('[name="tiempo"]')) normalizeTime(event.target);
+  });
   document.getElementById('add').addEventListener('click',addRace);addRace();
   document.getElementById('registro').addEventListener('submit',function(e){
     e.preventDefault();
+    list.querySelectorAll('[name="tiempo"]').forEach(normalizeTime);
     if(!this.reportValidity())return;
     const maratones=[...list.querySelectorAll('.race')].map(card=>{
       const item={};card.querySelectorAll('[name]').forEach(el=>item[el.name]=el.value.trim());return item;
