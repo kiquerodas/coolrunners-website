@@ -18,3 +18,48 @@
 @media(max-width:1020px){.race-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.marathon-inner{grid-template-columns:1fr}.marathon-wall{max-width:860px}}
 @media(max-width:700px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.gallery-grid figure,.gallery-grid figure:nth-child(1),.gallery-grid figure:nth-child(6){grid-column:span 1}.gallery-grid img,.gallery-grid figure:nth-child(1) img,.gallery-grid figure:nth-child(6) img{height:230px}.gallery-grid figcaption{font-size:9px}.race-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.race-name{font-size:18px}.race-tile{padding:7px}}
 @media(max-width:400px){.gallery-grid img,.gallery-grid figure:nth-child(1) img,.gallery-grid figure:nth-child(6) img{height:190px}}
+
+/* V6 — Inclusive community section, responsive */
+.all-levels{margin-top:74px;background:linear-gradient(145deg,#0a2948 0%,#0c406c 60%,#116a9e 100%);color:#fff;padding:48px 46px 34px;position:relative;overflow:hidden;box-shadow:0 22px 50px #0b355026}
+.all-levels::before{content:"";position:absolute;width:360px;height:360px;border:1px solid #ffffff21;border-radius:50%;right:-140px;top:-180px;pointer-events:none}
+.all-levels .kicker{color:#a3dcff}.all-levels h3{font-size:clamp(43px,5vw,71px);line-height:.99;margin:0 0 18px}.all-levels h3 span{color:#80d1ff}.all-levels-intro{position:relative;max-width:930px}.all-levels-intro p{max-width:770px;color:#d1e6f5;line-height:1.85;font-size:15px;margin-bottom:30px}.all-levels-intro strong{color:white}
+.levels-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;position:relative}
+.level-card{background:#ffffff12;border:1px solid #ffffff30;padding:24px 22px 23px;transition:transform .25s,background .25s}
+.level-card:hover{transform:translateY(-5px);background:#ffffff20}.level-number{font-weight:800;color:#a3dafe;font-size:10px;letter-spacing:1.5px}
+.level-card h4{font-family:'Barlow Condensed',Impact,sans-serif;font-size:34px;line-height:1;letter-spacing:.01em;margin:15px 0 12px}.level-card p{font-size:13px;color:#d1e6f3;line-height:1.7;margin:0}
+.distance-band{margin-top:24px;background:#061b30ab;border:1px solid #80cdfb44;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative}
+.distance-label{display:block;font-size:11px;font-weight:900;letter-spacing:1.6px;color:#a9ddfb;margin-bottom:14px}.distance-tags{display:flex;flex-wrap:wrap;gap:8px}
+.distance-tags span{font-size:11px;font-weight:800;color:#e8f6ff;border:1px solid #a4daff53;background:#ffffff0a;padding:9px 11px;white-space:nowrap}
+.distance-band .button{flex-shrink:0}.all-levels-foot{margin:24px 0 0;color:#d2eafa;font-size:13px;line-height:1.7}.all-levels-foot strong{color:#fff}
+/* V6 — Price stage: richer blue backdrop and clearly separated cards */
+.price-stage{margin:30px 0 23px;padding:25px;background:linear-gradient(130deg,#08243f 0%,#0a4b7e 65%,#137eac 100%);color:white;position:relative;overflow:hidden;box-shadow:0 18px 42px #092e502e}
+.price-stage:before{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff22;border-radius:50%;right:-110px;top:-125px;pointer-events:none}
+.price-stage-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:10px;letter-spacing:1.3px;font-weight:900;color:#b1e7ff;position:relative}
+.price-stage-accent{font-size:26px;color:#ff9c56}.price-stage .prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:19px 0 16px;border:0;position:relative}
+.price-stage .prices .price-card{background:#fff;padding:20px 17px;border:0;border-radius:3px;box-shadow:0 8px 18px #04182b2a}
+.price-stage .prices .price-card+div{border:0;padding-left:17px}
+.price-stage .prices small{color:#3c688e;font-size:10px}.price-stage .prices strong{color:#0c3255;font-size:clamp(48px,5vw,64px);line-height:1.15;margin:7px 0}
+.price-card>span{color:#526d80;font-size:11px;line-height:1.4;display:block}.price-stage-footer{color:#d5edff;font-size:10px;font-weight:800;letter-spacing:.8px;line-height:1.8;position:relative}.price-stage-footer span{color:#ff9e53;padding:0 7px}
+@media(max-width:800px){.all-levels{padding:35px 25px}.levels-grid{grid-template-columns:1fr}.level-card{padding:18px}.distance-band{flex-direction:column;align-items:stretch}.distance-band .button{align-self:flex-start}}
+@media(max-width:500px){.all-levels{padding:30px 17px;margin-top:52px}.all-levels h3{font-size:46px}.distance-band{padding:17px}.distance-tags span{font-size:10px;white-space:normal}.price-stage{padding:17px}.price-stage .prices{gap:8px}.price-stage .prices .price-card,.price-stage .prices .price-card+div{padding:15px 10px}.price-stage .prices strong{font-size:48px}.price-card>span{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.level-card:hover{transform:none}}
+
+/* V7 — community family story */
+.all-levels-intro{max-width:1000px}
+.all-levels-intro p{max-width:860px;margin-bottom:15px;font-size:15px;line-height:1.85}
+.all-levels-intro .all-levels-promise{border-left:4px solid #ff9b4a;padding:10px 0 10px 18px;margin:23px 0 35px;color:#fff;font-size:17px;line-height:1.7}
+.level-section-heading{margin:17px 0 20px;position:relative}
+.level-section-heading>span{font-weight:800;font-size:10px;letter-spacing:2px;color:#ffaf70}
+.level-section-heading h4{font-family:'Barlow Condensed',Impact,sans-serif;font-weight:900;font-size:clamp(27px,3.2vw,43px);margin:7px 0 0;letter-spacing:.02em}
+.level-section-heading em{font-style:normal;color:#9bdcff}
+.family-finish{margin-top:28px;padding:28px 0 0;border-top:1px solid #8ac9f755;position:relative}
+.family-finish-mark{position:absolute;top:28px;right:0;color:#ff9b4a;font-size:33px}
+.family-finish>p{font-size:13px;line-height:1.8;max-width:690px;color:#d0e9f9;margin:0 0 15px}
+.family-finish blockquote{font-family:'Barlow Condensed',Impact,sans-serif;text-transform:uppercase;font-weight:900;font-size:clamp(32px,4.5vw,55px);line-height:1.04;max-width:930px;margin:0 0 20px;color:white}
+.family-finish blockquote span{color:#8ed5ff}
+.family-finish-bottom{display:flex;align-items:center;justify-content:space-between;gap:25px;font-size:12px;color:#e5f5ff;line-height:1.6}
+.family-finish-bottom strong{color:#ffad66;white-space:nowrap;letter-spacing:1px}
+/* Price cards on a stronger but still readable blue background */
+.price-stage{background:radial-gradient(circle at 92% 12%,#2b8fca90 0%,transparent 42%),linear-gradient(135deg,#061e3b 0%,#073d6e 59%,#0e70ad 100%);border:1px solid #9fdcff40;border-radius:10px}
+.price-stage .prices .price-card{border-radius:7px}
+@media(max-width:700px){.family-finish-bottom{flex-direction:column;align-items:flex-start;gap:5px}.all-levels-intro .all-levels-promise{font-size:15px}.family-finish-mark{font-size:25px}}
