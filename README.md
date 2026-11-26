@@ -1,16 +1,20 @@
-# CoolRunners Guatemala — V4
+Coach Kique Running — Website V5 (Fotografía de portada y Coach)
 
-Esta versión incorpora seis fotografías reales adicionales de CoolRunners y un muro de 10 maratones. Los siete logos disponibles fueron convertidos a WebP de mayor resolución de visualización; el detalle original no puede recuperarse por completo del material de baja resolución. Nueva York, Valencia y Frankfurt se muestran como etiquetas de texto hasta conseguir sus logos.
+Este ZIP incluye el sitio completo para GitHub Pages.
 
-## Publicar en GitHub Pages
-1. Abra su repositorio `kiquerodas/coolrunners-website`.
-2. Reemplace en la raíz `index.html`, `styles.css`, `script.js`.
-3. Abra `assets/` y suba todos los archivos nuevos de esta carpeta (puede dejar los anteriores).
-4. Confirme los cambios. GitHub Pages publicará automáticamente la nueva versión.
+SI YA PUBLICASTE V4: solo necesitas reemplazar:
+  - index.html (raíz)
+  - styles.css (raíz)
+  - assets/hero-segment.png (nuevo)
+  - assets/coach-segment.png (nuevo)
+No necesitas reemplazar los demás archivos ni subir todo de nuevo.
 
-## Antes de compartir
-- Compruebe consentimiento de las personas retratadas.
-- Los mapas abren búsquedas y no garantizan el punto exacto.
-- El formulario de contacto abre la app de correo; no almacena respuestas.
-- El registro histórico de maratones sigue marcado como próximo; no hay base de datos conectada.
-- Logos de maratones: material proporcionado por el usuario. Verifique derechos de uso para su publicación.
+ASIGNACIÓN DE IMÁGENES:
+- hero-segment.png: primera sección, «Entrena con propósito».
+- coach-segment.png: segunda sección, «Conoce a tu coach».
+
+Estas imágenes se muestran como fondos panorámicos con texto HTML a la izquierda, respetando el espacio vacío incluido en las imágenes.
+En móviles, primero aparece la imagen y después el texto para no cubrir al corredor.
+
+Sube archivos a https://github.com/kiquerodas/coachkique-website
+Revisa la página: https://kiquerodas.github.io/coachkique-website/
