@@ -85,3 +85,23 @@
     background-position:center, 64% center;
   }
 }
+
+/* V9 — community-first copy; preserves existing layout, images and navigation */
+.benefit-title{font:800 clamp(18px,1.8vw,23px)/1.12 'Barlow Condensed',Impact,sans-serif;letter-spacing:0;margin:9px 0 0;color:#123954}
+.benefits p em{color:#1877ac;font-style:normal;font-weight:700}
+.training-card .workout-more{margin:8px 0 12px;color:#dceeff}
+.workout-more summary{list-style:none;cursor:pointer;color:#9cdaff;font-size:12px;font-weight:750;line-height:1.5;padding:9px 18px 9px 0;position:relative;outline-offset:3px}
+.workout-more summary::-webkit-details-marker{display:none}
+.workout-more summary:after{content:'⌄';position:absolute;right:1px;top:4px;font-size:22px;line-height:1;color:#ff9d62;transition:transform .2s}
+.workout-more[open] summary:after{transform:rotate(180deg)}
+.workout-answer{background:#082039;border-left:2px solid #77c9f9;padding:13px;margin-top:5px;border-radius:3px}
+.training-card .workout-answer p{margin:0 0 10px;color:#e2f1fc;font-size:12px;line-height:1.8;white-space:pre-line}
+.training-card .workout-answer p:last-child{margin-bottom:0}
+.coach-community-box{background:linear-gradient(125deg,#062d50,#0f639a);padding:24px 26px;margin:28px 0 24px;border-radius:8px;color:#fff;position:relative;overflow:hidden}
+.coach-community-box:after{content:'';position:absolute;right:-44px;top:-73px;border:1px solid #ffffff35;border-radius:50%;width:210px;height:210px;pointer-events:none}
+.coach-community-label{color:#a9e2ff;letter-spacing:1.5px;font-size:10px;font-weight:900}
+.coach-community-box h3{font-size:clamp(31px,3.2vw,44px);margin:12px 0;line-height:1.05;color:#fff}
+.coach-community-box h3 span{color:#87d1ff}
+.coaching-copy .coach-community-box p{color:#e4f3ff;margin:0;font-size:14px;line-height:1.65}
+.coaching-copy h2{font-size:clamp(49px,6vw,82px)}
+@media(max-width:700px){.benefit-title{font-size:20px}.coach-community-box{padding:20px}.training-card .workout-more summary{font-size:11px}}
